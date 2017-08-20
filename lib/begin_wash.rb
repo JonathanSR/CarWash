@@ -23,7 +23,6 @@ class BeginWash
     carwash.plates_check(vehicle)
     exit if vehicle.plates == '1111111'
     carwash.previous_check(vehicle)
-    # binding.pry
     carwash.charges(vehicle)
     puts Messages.goodbye
   end
