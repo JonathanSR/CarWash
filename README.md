@@ -1,5 +1,5 @@
 # CarWash
-A Ruby program that runs a simulated car wash
+A Ruby program that runs a simulated car wash.
 
 ## Installing / Getting Started
 
@@ -21,4 +21,4 @@ To run the program:
 ```shell
 ruby lib/begin_wash.rb
 ```
-To modify the program, you will make changes in the beginwash.rb file. To initiate a second run through the carwash add 'carwash.previous_check(vehicle)' and 'carwash.charges(vehicle)' methods after the last 'carwash.charges(vehicle)' method in the start method. To modify the vehicle make changes to the model in the initiate method. To use the car model uncomment it and comment out the truck model.
+To modify the program, you will make changes in the beginwash.rb file. To initiate a second run through the carwash add 'carwash.previous_check(vehicle)' and 'carwash.charges(vehicle)' methods after the last 'carwash.charges(vehicle)' method in the 'start' method. To modify the vehicle make changes to the model in the 'initialize' method. To use the car model uncomment it and comment out the truck model.
