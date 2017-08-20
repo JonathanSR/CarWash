@@ -4,7 +4,6 @@ require './lib/car_wash'
 require_relative '../lib/car'
 require_relative '../lib/truck'
 require_relative '../lib/messages'
-require 'pry'
 
 class CarWashTest < Minitest::Test 
   def test_it_creates_instance_of_car_wash
@@ -35,7 +34,6 @@ class CarWashTest < Minitest::Test
     car = Car.new({type: 'car', plates:'1111111'}) 
     carwash = CarWash.new
     carwash.accepts_vehicle(car)
-
 
     assert_output("\nYour total for today comes out to $5.\n") { carwash.charges(car) }
   end
@@ -73,12 +71,12 @@ class CarWashTest < Minitest::Test
   def test_vehicle_receives_50_percent_discount_for_second_time_at_car_wash
     truck = Truck.new({type: 'truck', mud: 'no', bed: 'up', plates:'1234567'})
     carwash = CarWash.new 
+    check = carwash.plates_check(truck)
     carwash.previous_check(truck)
     assert_equal ({'1234567'=>{:type=>"truck", :mud=>"no", :bed=>"up", :visits=>1}}) , carwash.vehicles
     
     carwash.previous_check(truck)
     assert_equal ({'1234567'=>{:type=>"truck", :mud=>"no", :bed=>"up", :visits=>2}}) , carwash.vehicles    
-    check = carwash.plates_check(truck)
 
     assert_output("\nYour total for today comes out to $5.\n") {carwash.charges(truck)}
   end
@@ -89,5 +87,14 @@ class CarWashTest < Minitest::Test
     carwash.previous_check(truck)
 
     assert_equal 1, carwash.vehicles[truck.plates][:visits]
+  end
+
+    def test_logs_visit_if_vehicle_has_been_at_carwash_before
+    truck = Truck.new({type: 'truck', mud: 'no', bed: 'up', plates:'1234567'})
+    carwash = CarWash.new 
+    carwash.previous_check(truck)
+    carwash.previous_check(truck)
+
+    assert_equal 2, carwash.vehicles[truck.plates][:visits]
   end
 end

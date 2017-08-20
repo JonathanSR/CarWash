@@ -3,7 +3,6 @@ class Car
               :plates,
               :visits
 
-
   def initialize(type:, plates:)
     @type = type
     @plates = plates

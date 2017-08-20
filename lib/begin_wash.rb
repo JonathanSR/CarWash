@@ -2,14 +2,11 @@ require_relative '../lib/car'
 require_relative '../lib/truck'
 require_relative '../lib/car_wash'
 require_relative '../lib/messages'
-require 'pry'
-
 
 class BeginWash
   include Messages
   attr_reader :carwash,
               :vehicle
-
 
   def initialize
     @carwash = CarWash.new
@@ -26,7 +23,6 @@ class BeginWash
     carwash.charges(vehicle)
     puts Messages.goodbye
   end
-
 end
 
 Begin = BeginWash.new

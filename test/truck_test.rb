@@ -1,7 +1,6 @@
 require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/truck'
-require 'pry'
 
 class TruckTest < Minitest::Test
   def test_it_creates_an_instance_of_truck
