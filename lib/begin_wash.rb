@@ -10,7 +10,7 @@ class BeginWash
 
   def initialize
     @carwash = CarWash.new
-    @vehicle = Truck.new({type: 'truck', mud: 'yes', bed: 'up', plates:'1111121'})
+    @vehicle = Truck.new({type: 'truck', mud: 'no', bed: 'up', plates:'1111121'})
     # @vehicle = Car.new({type: 'car', plates:'1111112'}) 
     start
   end
@@ -21,6 +21,11 @@ class BeginWash
     exit if vehicle.plates == '1111111'
     carwash.previous_check(vehicle)
     carwash.charges(vehicle)
+
+    #Uncomment for second run through carwash
+    # carwash.previous_check(vehicle)
+    # carwash.charges(vehicle)
+
     puts Messages.goodbye
   end
 end
